@@ -5,7 +5,7 @@
             <Quantity/> 
         </div>
         <div class="main">
-            <span>Детский+</span>
+            <span>Детский</span>
             <Quantity/>
         </div> 
     </form>
