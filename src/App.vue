@@ -1,19 +1,12 @@
 <template>
-  <header>
-    <h1>Куда едем?</h1>
-  </header>
-
   <main>
-    <Route/>
-    <Passengers/>
-    <Dates/>
-    <Submit/>
+    <div class="m">
+      <Route class="c"/>
+      <Passengers class="c"/>
+      <Dates class="c"/>
+      <Submit class="c"/>
+    </div>
   </main>
-
-  <footer>
-    tel: +7(800)555-35-35
-  </footer>
-  
 </template>
 
 <script>
@@ -31,22 +24,19 @@ export default{
 
 <style scoped>
 *{
-  display: inline-flex;
-  margin: auto;
-  padding: auto;
+  display: flex;
 }
-template{
-  display: block;
+.c{
+  background-color:rgb(228, 241, 255);
+  height: 100px;
+  margin: 2px;
+  padding: 7px;
+  align-items: center;
 }
 main{
-  position: relative;
-  top: auto;
-  border: 2px solid red;
-  height: 70px;
-}
-footer{
-  position: relative;
-  top: 500px
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
 </style>
