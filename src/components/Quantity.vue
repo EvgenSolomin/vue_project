@@ -1,8 +1,8 @@
 <template>
     <form @submit.prevent class="quan">
-        <button @click="minus">-</button>
+        <Button @click="minus">-</Button>
         {{ passen }}
-        <button @click="plus">+</button>
+        <Button @click="plus">+</Button>
     </form>
 </template>
 
@@ -32,11 +32,10 @@ export default{
 button{
     width: 20px;
     height: 20px;
+    margin: 5px;
 }
-*{
-    margin: auto;
-}
-.quan{
+form{
     display: flex;
+    align-items: center;
 }
 </style>
