@@ -1,5 +1,5 @@
 <template>
-    <form>
+    <form class="form">
        <div class="main">
             <span>Взрослый</span>
             <Quantity/> 
@@ -9,8 +9,6 @@
             <Quantity/>
         </div> 
     </form>
-    
-    
 </template>
 <script>
 import Quantity from './Quantity.vue'
@@ -21,13 +19,10 @@ export default{
 </script>
 <style scoped>
 *{
-    margin: 0;
-    padding: 5px;
-    
+    display: flex;
 }
 .main{
-    margin: auto;
-    display: flexbox;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 </style>
