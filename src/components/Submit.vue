@@ -1,5 +1,7 @@
 <template>
     <form>
-        <button>Поиск</button>
+        <Button>Поиск</Button>
     </form>
 </template>
+<style scoped>
+</style>
