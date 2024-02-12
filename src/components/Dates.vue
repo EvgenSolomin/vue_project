@@ -1,26 +1,40 @@
 <template>
-    <form>
-        <input type="date">
-        <input v-if="check" type="date" >
-        <form>
-           <input v-model="check" type="checkbox">Туда-обратно 
-        </form>
+    <form class="form">
+        <Calendar v-model="start" @select="printDate" />
+        <Calendar v-show="check" v-model="end"/>
+        <div class="check">
+            <input v-model="check" type="checkbox" />Туда-обратно 
+        </div>
     </form>
 </template>
 
 <script>
-export default{
-    data(){
-        return{
+import Checkbox from 'primevue/checkbox';
+import { ref } from 'vue'
+export default {
+    data() {
+        return {
             check: false
-        }
-    }
-}
+        };
+    },
+    setup() {
+        const start = ref(new Date().toLocaleDateString('en-ca'));
+        return {
+            start
+        };
+    },
+    mounted() {
+        console.log(this.start); // 0
+    },
+    components: { Checkbox }
+}        
+    
+
 </script>
 
-<style>
+<style scoped>
 *{
-    margin: 5px;
+    display:flex;
 }
 </style>
 
