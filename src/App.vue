@@ -1,42 +1,22 @@
 <template>
-  <main>
-    <div class="m">
-      <Route class="c"/>
-      <Passengers class="c"/>
-      <Dates class="c"/>
-      <Submit class="c"/>
-    </div>
-  </main>
+  <Search_form/>
+  <Passengers_list/>
 </template>
-
 <script>
-import Route from './components/Route.vue'
-import Passengers from './components/Passengers.vue'
-import Dates from './components/Dates.vue'
-import Submit from './components/Submit.vue'
-
+import Search_form from './components/Search_form/Search_form.vue';
+import Passengers_list from './components/Passengers_list/P_list.vue'
+import Flight_list from './components/Flight_list/Flight_list_form.vue'
 export default{
-  components:{
-    Route, Passengers, Dates, Submit
-}
-}
-</script>
+    components:{
+      Search_form, Passengers_list, Flight_list
+    }
+  }
 
+</script>
 <style scoped>
 *{
   display: flex;
-}
-.c{
-  background-color:rgb(228, 241, 255);
-  height: 100px;
-  margin: 2px;
-  padding: 7px;
-  align-items: center;
-}
-main{
   justify-content: center;
-  align-items: center;
-  height: 100vh;
+  margin: 5px;
 }
-
 </style>
