@@ -1,5 +1,6 @@
 <template>
     <div class="form">
+        <h2>Список пассажиров</h2>
         <P_form/>
     </div>
 </template>
@@ -15,8 +16,8 @@ export default{
 <style scoped>
 .form{
     display: flex;
+    flex-direction: column;
     justify-content: left;
     background-color:rgb(228, 241, 255);
-    height: 300px;
 }
 </style>
