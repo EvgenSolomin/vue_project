@@ -1,29 +1,29 @@
 <template>
-    <h2>Список пассажиров</h2>
     <div class="p_form">
-        <InputText v-model="surname" placeholder="Фамилия" />
-        <InputText v-model="name" placeholder="Имя"/>
-        <InputText v-model="patronymic" placeholder="Отчество"/>
-        <Calendar class="call" v-model="bd" showIcon :showOnFocus="false" iconDisplay="input"/>
-        <Dropdown placeholder="Пол" :options="sexarr" />
-        <Dropdown placeholder="Гражданство"  />
-        <Dropdown placeholder="Документ"  />
-        <InputMask placeholder="Серия" mask="9999"/>
-        <InputMask placeholder="Номер паспорта" mask="999-999"/>
-        <Button label="Купить"></Button>
+        <InputText v-model="passeger[0]" placeholder="Фамилия" />
+        <InputText v-model="passeger[1]" placeholder="Имя"/>
+        <InputText v-model="passeger[2]" placeholder="Отчество"/>
+        <Calendar v-model="bd" showIcon  placeholder="Дата рождения"/>
+        <Dropdown v-model="sex" placeholder="Пол" :options="sexarr" />
+        <InputText placeholder="Гражданство"  />
+        <Dropdown v-model="doc" placeholder="Документ" :options="docarr"/>
+        <InputMask class="pasport" v-if="doc != ''" placeholder="Серия/Номер паспорта" mask="9999/999-999"/>
+        <Button label="Купить"></Button> 
     </div>
+    
 </template>
 
 <script>
 export default {
     data(){
         return{
-            name: '',
-            surname: '',
-            patronymic: '',
+            passeger:[],
             bd: '',
+            sex:'',
+            doc:'',
             sexarr: ['Мужской', 'Женский'],
-            sex:''
+            docarr: ['Паспорт']
+            
         };
     }
 }
@@ -31,14 +31,13 @@ export default {
 
 <style scoped>
 *{
-    display: flexbox;
-    height: 30px;
+    display: flex;
+    margin: 5px;
 }
 .p_form{
-    display: inline;
-    height: 50px;
-    margin: 5px;
-    padding: 5px;
-    border: 2px solid black;
+    flex-direction: column;
+    width: 250px;
+    border: 1px solid black;
+    border-radius: 5px;
 }
 </style>
