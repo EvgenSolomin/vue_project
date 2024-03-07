@@ -21,9 +21,6 @@
   </script>
   
   <style scoped>
-  *{
-    display: flex;
-  }
   .c{
     background-color:rgb(228, 241, 255);
     height: 100px;
