@@ -1,13 +1,16 @@
 <template>
-    <form class="form">
-       <div class="main">
-            <span>Взрослый</span>
-            <Quantity/> 
+    <form>
+        <div class=" flex flex-row justify-content-center" >
+            <div class="flex flex-column justify-content-center align-items-center m-1">
+                <span>Взрослый</span>
+                <Quantity /> 
+            </div>
+            <div class="flex flex-column justify-content-center align-items-center m-1">
+                <span>Детский</span>
+                <Quantity/>
+            </div>
         </div>
-        <div class="main">
-            <span>Детский</span>
-            <Quantity/>
-        </div> 
+        
     </form>
 </template>
 <script>
@@ -17,12 +20,3 @@ export default{
     components:{Quantity}
 }
 </script>
-<style scoped>
-*{
-    display: flex;
-}
-.main{
-    flex-direction: column;
-    align-items: center;
-}
-</style>

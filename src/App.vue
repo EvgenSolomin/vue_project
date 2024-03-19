@@ -1,6 +1,6 @@
 <script>
 import Search_form from './components/Search_form/Search_form.vue';
-import Passengers_list from './components/Passengers_list/P_list.vue'
+import Passengers_list from './components/Passengers_list/P_main.vue'
 import Flight_list from './components/Flight_list/Flight_list_form.vue'
 export default{
     components:{
@@ -13,15 +13,18 @@ export default{
   <div class="content m-5">
     <div class="grid">
       <div class="sm:col-12 md:col-12 lg:col-4 xl:col-4" >
-        <Card style="min-width: 320px; height: 550px">
+        <Card style="min-width: 320px; height: 550px; background-color: aquamarine;">
           <template #title>Bilet-check.ru <br> билеты на автобус</template>
-          <template #content>
-            <Search_form/>
+          <template #content >
+            <div class="flex h-27rem align-items-center">
+              <Search_form />
+            </div>
+            
           </template>
         </Card>
       </div>
       <div class="sm:col-12 md:col-12 lg:col-8 xl:col-8">
-        <Card style="min-width: 320px; height: 550px">
+        <Card style="min-width: 320px; height: 550px; background-color: aquamarine;">
           <template #title>Найдено рейсов: </template>
           <template #content>
             <Flight_list/>
@@ -31,7 +34,7 @@ export default{
     </div>
     <div class="grid">
       <div class="col-12 ">
-        <Card style="min-width: 320px;">
+        <Card style="min-width: 320px; background-color: aquamarine;">
           <template #title>Данные пассажиров: </template>
           <template #content>
             <Passengers_list/>

@@ -1,11 +1,18 @@
 <template>
-    <div class="m">
-        <Route class="c"/>
-        <Passengers class="c"/>
-        <Dates class="c"/>
-        <Submit class="c"/>
-    </div>
-  </template>
+  <Card class="w-full">
+    <template #content>
+      <div class="flex flex-column" >
+        <Route class="m-1 w-full" />
+        <Passengers class="m-1 w-full" />
+        <Dates class="m-1 w-full" />
+        <Submit class="m-1 w-full" />
+      </div>
+    </template>
+    
+  </Card>
+  
+  
+</template>
   
   <script>
   import Route from './Route.vue'
@@ -20,18 +27,4 @@
   }
   </script>
   
-  <style scoped>
-  .c{
-    background-color:rgb(228, 241, 255);
-    height: 100px;
-    margin: 2px;
-    padding: 7px;
-    align-items: center;
-  }
-  main{
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
   
-  </style>

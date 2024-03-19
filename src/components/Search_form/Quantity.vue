@@ -1,8 +1,11 @@
 <template>
-    <form @submit.prevent class="quan">
-        <Button @click="minus">-</Button>
-        {{ passen }}
-        <Button @click="plus">+</Button>
+    <form @submit.prevent>
+        <div class="flex justify-content-center align-items-center m-1">
+            <Button class="m-1 " @click="minus">-</Button>
+            {{ passen }}
+            <Button class="m-1" @click="plus">+</Button>
+        </div>
+        
     </form>
 </template>
 
@@ -27,13 +30,3 @@ export default{
     }
 }
 </script>
-
-<style scoped>
-button{
-    margin: 5px;
-}
-form{
-    display: flex;
-    align-items: center;
-}
-</style>

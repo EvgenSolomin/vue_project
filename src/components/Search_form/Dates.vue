@@ -1,10 +1,13 @@
 <template>
     <form class="form">
-        <Calendar v-model="start" @select="printDate" />
-        <Calendar v-show="check" v-model="start"/>
-        <div class="check">
-            <input v-model="check" type="checkbox" />Туда-обратно 
+        <div class="flex flex-row align-items-center m-1 ">
+            <Calendar class="m-1 w-5" v-model="start" @select="printDate" />
+            <Calendar class="m-1 w-5" v-show="check" v-model="start"/>
+            <div class=" flex m-1 w-4  align-items-center">
+                <input v-model="check" type="checkbox" />Обратно 
+            </div>
         </div>
+        
     </form>
 </template>
 
@@ -29,10 +32,4 @@ export default {
     
 
 </script>
-
-<style scoped>
-*{
-    display:flex;
-}
-</style>
 
