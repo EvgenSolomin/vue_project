@@ -1,9 +1,10 @@
-<template >
-        <div class="flex flex-row w-full">
-            <InputText  class="w-6 m-1" v-model="pointA" type="text" placeholder="Откуда"/>
-            <Button class="w-1 m-1" @click="reverse" icon="pi pi-arrows-h" />
-            <InputText class="w-6 m-1" v-model="pointB" type="text" placeholder="Куда"/>
-        </div> 
+<template>
+        <InputText v-model="pointA" type="text" placeholder="Откуда"/>
+        <Button @click="reverse" icon="pi pi-arrows-h" 
+        :pt="{ 
+            root: { class: 'bg-indigo-600 border-indigo-600' } 
+        }"></Button>
+        <InputText v-model="pointB" type="text" placeholder="Куда"/>
 </template>
 
 <script>
@@ -27,6 +28,14 @@ export default{
 </script>
 
 <style scoped>
-
+button{
+    width: 30px;
+    height: 30px;
+    margin: 5px;
+}
+*{
+    display: flex;
+    height: 30px;
+}
 </style>
 
