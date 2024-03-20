@@ -1,5 +1,4 @@
 <template>
-    <form class="form">
         <div class="flex flex-row align-items-center m-1 ">
             <Calendar class="m-1 w-5" v-model="start" @select="printDate" />
             <Calendar class="m-1 w-5" v-show="check" v-model="start"/>
@@ -7,8 +6,6 @@
                 <input v-model="check" type="checkbox" />Обратно 
             </div>
         </div>
-        
-    </form>
 </template>
 
 <script>

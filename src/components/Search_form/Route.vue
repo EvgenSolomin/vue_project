@@ -1,11 +1,9 @@
 <template >
-    <form @submit.preven >
         <div class="flex flex-row w-full">
             <InputText  class="w-6 m-1" v-model="pointA" type="text" placeholder="Откуда"/>
             <Button class="w-1 m-1" @click="reverse" icon="pi pi-arrows-h" />
             <InputText class="w-6 m-1" v-model="pointB" type="text" placeholder="Куда"/>
-        </div>
-    </form>    
+        </div> 
 </template>
 
 <script>
