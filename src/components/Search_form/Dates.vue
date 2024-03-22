@@ -1,10 +1,8 @@
 <template>
-        <div class="flex flex-row align-items-center m-1 ">
-            <Calendar class="m-1 w-5" v-model="start" @select="printDate" />
-            <Calendar class="m-1 w-5" v-show="check" v-model="start"/>
-            <div class=" flex m-1 w-4  align-items-center">
-                <input v-model="check" type="checkbox" />Обратно 
-            </div>
+        <div class="flex flex-row justify-content-center align-items-center m-1 " >
+            <Calendar class="m-1 w-5" placeholder="Дата отбытия" v-model="p_from"  :minDate="minDate"/>
+            <Calendar class="m-1 w-5" placeholder="Дата возвращения" v-show="check" v-model="p_to" :minDate="minDate"/>
+            <Button @click="one_way" icon="pi pi-arrow-right-arrow-left"/>
         </div>
 </template>
 
@@ -13,17 +11,31 @@ import { ref } from 'vue'
 export default {
     data() {
         return {
-            check: false
+            check: false,
+            p_from: null,
+            p_to: null,
+            minDate: null
         };
     },
-    setup() {
-        const start = ref(new Date().toLocaleDateString());
-        return {
-            start
-        };
+    created(){
+        let today = new Date();
+        let day = today.getDate();
+        let month = today.getMonth();
+        let year = today.getFullYear();
+
+        this.minDate = new Date();
+        this.minDate.setDate(day);
+        this.minDate.setMonth(month);
+        this.minDate.setFullYear(year);
     },
-    mounted() {
-        console.log(this.start); // 0
+    methods:{
+        one_way(){
+            if(this.check){
+                this.check = false
+            }else{
+                this.check = true
+            }
+        }
     }
 }        
     

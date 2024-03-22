@@ -1,12 +1,12 @@
 <template>
     <div class=" flex flex-row justify-content-center" >
-        <div class="flex flex-column justify-content-center align-items-center m-1">
+        <div class="flex flex-row justify-content-center align-items-center m-1">
             <span>Взрослый</span>
-            <Quantity /> 
+            <Quantity :passengers="passengers" /> 
         </div>
-        <div class="flex flex-column justify-content-center align-items-center m-1">
+        <div class="flex flex-row justify-content-center align-items-center m-1">
             <span>Детский</span>
-            <Quantity/>
+            <Quantity :passengers="child"/>
         </div>
     </div>
 </template>
@@ -14,6 +14,12 @@
 import Quantity from './Quantity.vue'
 
 export default{
-    components:{Quantity}
+    components:{Quantity},
+    data(){
+        return{
+            passengers: 1,
+            child: 0
+        }
+    }
 }
 </script>

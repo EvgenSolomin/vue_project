@@ -1,31 +1,33 @@
-<template >
-    <div class="flex flex-row w-full">
-        <InputText  class="w-6 m-1" v-model="pointA" type="text" placeholder="Откуда"/>
-        <Button class="w-1 m-1" @click="reverse" icon="pi pi-arrows-h" />
-        <InputText class="w-6 m-1" v-model="pointB" type="text" placeholder="Куда"/>
-    </div> 
+<template>
+  <div class="grid justify-content-center align-items-center w-full">
+    <InputText class="col-5 m-1" v-model="pointA" type="text" placeholder="Откуда" />
+    <Button
+      class="flex justify-content-center m-1"
+      style="height: 30px; width: 30px"
+      @click="reverse"
+      icon="pi pi-arrows-h"
+    />
+    <InputText class="col-5 m-1" v-model="pointB" type="text" placeholder="Куда" />
+  </div>
 </template>
 
 <script>
-
-export default{
-data() {
+export default {
+  data() {
     return {
-        pointA: '',
-        pointB: '',
-        rev: ''
+      pointA: "",
+      pointB: "",
+      rev: "",
     };
-},
-methods: {
+  },
+  methods: {
     reverse() {
-        this.rev = this.pointA;
-        this.pointA = this.pointB;
-        this.pointB = this.rev;
-    }
-}
-}
+      this.rev = this.pointA;
+      this.pointA = this.pointB;
+      this.pointB = this.rev;
+    },
+  },
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

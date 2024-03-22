@@ -1,15 +1,10 @@
 <template>
-  <Card class="w-full">
-    <template #content>
-      <div class="flex flex-column" >
-        <Route class="m-1 w-full" />
-        <Passengers class="m-1 w-full" />
-        <Dates class="m-1 w-full" />
-        <Submit class="m-1 w-full" />
+    <div class="w-full flex flex-column p-1 " >
+        <Route class="m-1 w-full border-round border-1 border-cyan-500" />
+        <Passengers class="m-1 w-full border-round border-1 border-cyan-500" />
+        <Dates class="m-1 w-full border-round border-1 border-cyan-500" />
+        <Submit class="m-1 w-full " />
       </div>
-    </template>
-    
-  </Card>
   
   
 </template>
