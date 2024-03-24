@@ -10,10 +10,13 @@ import { SearchFlights } from '@/services/SearchFlight';
                     Рейс: {{ i.name_trip }} {{ i.date_trip }} {{ i.time_trip }}
                 </div>
                 <p class="surface-overlay p-2 m-0">
-                    Пусто
+                    Отбытие: {{ i.date_trip }} {{ i.time_trip }} {{ i.from_address_point }}
+                </p>
+                <p class="surface-overlay p-2 m-0">
+                    Прибытие: {{ i.date_arrival_trip }} {{ i.time_arrival_trip }} {{ i.to_address_point }}
                 </p>
                 <div class="flex justify-content-end flex-wrap">
-                    <Button label="Купить" class="m-2 z-0" />
+                    <Button class="m-2 z-0">Купить: {{ i.full_ticket_price }}</Button>
                 </div>
             </div>
         </div>
