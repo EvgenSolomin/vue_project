@@ -7,7 +7,7 @@
             <div class="null">
                 Список пассажиров пуст
             </div>
-            <div class="flex flex-column w-2 p-1">
+            <div class="flex flex-column p-1 border-round border-1 border-cyan-500">
                 <InputText class="m-1" v-model="passeger.name" placeholder="Фамилия" />
                 <InputText class="m-1"  v-model="passeger.surname" placeholder="Имя"/>
                 <InputText class="m-1" v-model="passeger.patronymic" placeholder="Отчество"/>
@@ -16,7 +16,6 @@
                 <InputText class="m-1" v-model="passeger.nationality" placeholder="Гражданство"  />
                 <Dropdown class="m-1" v-model="passeger.doc" placeholder="Документ" :options="docarr"/>
                 <InputMask class="m-1" v-model="passeger.passport" v-if="passeger.doc != ''" placeholder="Серия/Номер паспорта" mask="9999/999-999"/>
-                <Button class="m-1" label="Добавить" @click="creatPassager"/>
             </div>            
         </template>
     </Card>
@@ -40,11 +39,6 @@ export default {
             docarr: ['Паспорт'],
             passegers:[]
         };
-    },
-    methods:{
-        creatPassager(){
-            this.passegers.push(this.passeger)
-        }
     }
 
 }

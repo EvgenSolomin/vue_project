@@ -1,8 +1,9 @@
 <template>
     <div class="flex justify-content-center align-items-center m-1">
-        <Button class="flex justify-content-center m-1" style="height: 30px; width: 30px" @click="minus">-</Button>
+        <Button v-if="p > passengers"  label="-" class="flex justify-content-center m-1" style="height: 30px; width: 30px" @click="minus"  />
+        <Button v-else label="-" class="flex justify-content-center m-1" style="height: 30px; width: 30px" @click="minus"  disabled/>
         {{ p }}
-        <Button class="flex justify-content-center m-1" style="height: 30px; width: 30px" @click="plus">+</Button>
+        <Button label="+" class="flex justify-content-center m-1" style="height: 30px; width: 30px" @click="plus" />
     </div>
 </template>
 
@@ -16,7 +17,8 @@ export default{
     },
     data(){
         return{
-            p: this.passengers
+            p: this.passengers,
+            bull: true
         }
     },
     methods:{

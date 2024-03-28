@@ -1,19 +1,3 @@
-<script>
-import Search_form from './components/Search_form/Search_form.vue';
-import Passengers_list from './components/Passengers_list/P_main.vue'
-import Flight_list from './components/Flight_list/Flight_list_form.vue'
-export default{
-    components:{
-      Search_form, Passengers_list, Flight_list
-    },
-    date(){
-      return{
-        bull: false
-      }
-    }
-  }
-</script>
-
 <template>
   <div class="content m-2">
     <div class="grid">
@@ -37,7 +21,7 @@ export default{
         </Card>
       </div>
     </div>
-    <div class="grid" v-show="bull">
+    <div class="grid" >
       <div class="col-12 ">
         <Card class="bg-cyan-100">
           <template #title>Данные пассажиров: </template>
@@ -49,6 +33,22 @@ export default{
     </div>
   </div>
 </template>
+
+<script>
+import Search_form from './components/Search_form/Search_form.vue';
+import Passengers_list from './components/Passengers_list/P_main.vue'
+import Flight_list from './components/Flight_list/Flight_list_form.vue'
+export default{
+    components:{
+      Search_form, Passengers_list, Flight_list
+    },
+    date(){
+      return{
+        bull: true
+      }
+    }
+  }
+</script>
 
 <style scoped>
 
