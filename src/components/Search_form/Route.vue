@@ -15,9 +15,9 @@
 export default {
   data() {
     return {
-      pointA: "",
-      pointB: "",
-      rev: "",
+      pointA: null,
+      pointB: null,
+      rev: null,
     };
   },
   methods: {

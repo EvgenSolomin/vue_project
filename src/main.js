@@ -16,6 +16,12 @@ import Dropdown from 'primevue/dropdown';
 import Card from 'primevue/card';
 import Panel from 'primevue/panel';
 
+import DataTable from 'primevue/datatable';
+import Column from 'primevue/column';
+import ColumnGroup from 'primevue/columngroup';   // optional
+import Row from 'primevue/row';                   // optional
+
+
 const app = createApp(App);
 app.use(PrimeVue)
 app.component('Button', Button)
@@ -27,4 +33,8 @@ app.component('FloatLabel', FloatLabel)
 app.component('Dropdown', Dropdown)
 app.component('Card', Card)
 app.component('Panel', Panel)
+app.component('DataTable', DataTable)
+app.component('Column', Column)
+app.component('ColumnGroup', ColumnGroup)
+app.component('Row', Row)
 app.mount('#app')

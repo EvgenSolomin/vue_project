@@ -22,25 +22,20 @@
 </template>
 
 <script>
-export default {
-    data(){
-        return{
-            passeger:{
-                name:'',
-                surname:'',
-                patronymic:'',
-                bd: '',
-                sex:'',
-                nationality:'',
-                doc:'',
-                passport:''
-            },
-            sexarr: ['Мужской', 'Женский'],
-            docarr: ['Паспорт'],
-            passegers:[]
-        };
-    }
+import { ref } from 'vue';
 
-}
+const passeger = ref({
+                name: null,
+                surname: null,
+                patronymic: null,
+                bd: null,
+                sex:'',
+                nationality: null,
+                doc: null,
+                passport: null
+            })
+const sexarr = ref(['Мужской', 'Женский'])
+const docarr = ref(['Паспорт'])
+
 </script>
 
