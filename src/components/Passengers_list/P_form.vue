@@ -21,10 +21,10 @@
     </Card>
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue';
 
-const passeger = ref({
+let passeger = ref({
                 name: null,
                 surname: null,
                 patronymic: null,
