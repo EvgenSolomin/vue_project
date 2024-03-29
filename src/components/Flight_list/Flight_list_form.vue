@@ -9,8 +9,8 @@ const trips = SearchFlights.getFlights();
 <template>
     <div class="overflow-hidden">
         <div class="overflow-auto border-round border-1 border-primary-500" style="height: 470px">
-            <DataTable :value="trips" stripedRows>
-                <Column header="Город отправления"><template #body>{{ trips.from_name_point }} </template></Column>
+            <DataTable :value="trips" dataKey="id_trip" stripedRows>
+                <Column header="Город отправления" field="from_name_point"/>
                 <Column header="Город прибытия" field="to_name_point">
                     <template #body="{ data }">
                         {{ data.to_name_point }} <br>
