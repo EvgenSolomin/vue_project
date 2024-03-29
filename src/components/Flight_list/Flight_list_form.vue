@@ -17,6 +17,11 @@ const trips = SearchFlights.getFlights();
                         {{ data.to_address_point }}
                     </template>
                 </Column>
+                <Column header="Город прибытия" field="to_name_point">
+                    <template #body="{ data }">
+                        <Button label="Купить"/>
+                    </template>
+                </Column>
             </DataTable>
         </div>
     </div>
