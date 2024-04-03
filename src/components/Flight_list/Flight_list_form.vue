@@ -102,7 +102,7 @@ export default {
 
                 <Column >
                     <template #body="{ data }">
-                        <Button :disabled="data.count_available_seats_trip < 1" :label= "data.count_available_seats_trip<1 ? 'Недостаточно мест' : 'Купить: ' + data.full_ticket_price + ' руб'" />
+                        <Button class="text-sm" :disabled="data.count_available_seats_trip < 1" :label= "data.count_available_seats_trip<1 ? 'Недостаточно мест' : 'Купить: ' + data.full_ticket_price + ' руб'" />
                     </template>
                 </Column>
             </DataTable>
