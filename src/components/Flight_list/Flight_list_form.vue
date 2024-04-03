@@ -12,15 +12,20 @@ export default {
             let res = time.indexOf(':');
             let hours = time.slice(0, res);
             let minuts = time.slice(res+1);
-            if (minuts != '00'){
+            if (minuts != '00')
                 time = hours + " часов\n" + minuts + " минут";
-            }else{
+            else
                 time = hours + " часов";
-            }
             return time;
         },
         dateFormat(input_date){
             return new Date(input_date).toLocaleDateString('ru-RU')
+        },
+        countAvailableSeatsTrip(available_seats){
+            if(available_seats == 0)
+                return " - "
+            else
+                return available_seats
         }
     }
 }
@@ -30,8 +35,8 @@ export default {
 <template>
     <div class="overflow-hidden">
         <div class="overflow-auto border-round border-1 border-primary-500" style="height: 470px">
-            <DataTable :value="trips" dataKey="id_trip" stripedRows>
-                <Column header="Город отправления">
+            <DataTable :value="trips" dataKey="id_trip" stripedRows removableSort>
+                <Column header="Город отправления" sortable>
                     <template #body="{ data }">
                         <div class="font-bold">
                             {{ data.from_name_point }}<br>
@@ -44,7 +49,7 @@ export default {
                     </template>
                 </Column>
 
-                <Column header="Время отправления" >
+                <Column header="Время отправления" sortable>
                     <template #body="{ data }">
                         <div class="font-bold">
                             {{ data.time_trip }} <br>
@@ -57,15 +62,15 @@ export default {
                     </template>
                 </Column>
 
-                <Column header="Время в пути" field="time_duration_trip">
+                <Column header="Время в пути" sortable>
                     <template #body="{ data }">
                         <div class="font-semibold text-sm">
-                            {{ formatTime(data.time_duration_trip) }} <br>
+                            {{ formatTime(data.time_duration_trip) }}
                         </div>
                     </template>
                 </Column>
 
-                <Column header="Город прибытия" >
+                <Column header="Город прибытия" sortable>
                     <template #body="{ data }">
                         <div class="font-bold">
                             {{ data.to_name_point }} <br>
@@ -76,13 +81,21 @@ export default {
                     </template>
                 </Column>
 
-                <Column header="Время прибытия" >
+                <Column header="Время прибытия" sortable>
                     <template #body="{ data }">
                         <div class="font-bold">
                             {{ data.time_arrival_trip }} <br>
                         </div>
                         <div class="text-xs">
                             {{ dateFormat(data.date_arrival_trip)  }}
+                        </div>
+                    </template>
+                </Column>
+
+                <Column header="Места" sortable>
+                    <template #body="{ data }">
+                        <div class="font-bold">
+                            {{ countAvailableSeatsTrip( data.count_available_seats_trip ) }}
                         </div>
                     </template>
                 </Column>
