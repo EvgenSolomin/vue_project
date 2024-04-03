@@ -269,8 +269,8 @@ export const SearchFlights = {
                 "ticket_id_2": "1",
                 "carriers": "ИП Яцунов С.П.",
                 "source": "evrotrans",
-                "seats_trip": "^",
-                "count_available_seats_trip": 0,
+                "seats_trip": "5",
+                "count_available_seats_trip": 1,
                 "bus_config": {
                     "1": {
                         "1": [

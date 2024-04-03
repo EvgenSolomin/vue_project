@@ -1,7 +1,6 @@
 <template>
     <div class="flex justify-content-center align-items-center m-1">
-        <Button v-if="p > passengers" label="-" class="flex justify-content-center m-1" style="height: 30px; width: 30px" @click="minus" />
-        <Button v-else label="-" class="flex justify-content-center m-1" style="height: 30px; width: 30px" @click="minus"  disabled/>
+        <Button :disabled="p == passengers" label="-" class="flex justify-content-center m-1" style="height: 30px; width: 30px" @click="minus" />
         {{ p }}
         <Button label="+" class="flex justify-content-center m-1" style="height: 30px; width: 30px" @click="plus" />
     </div>
