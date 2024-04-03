@@ -1,8 +1,29 @@
-<script setup>
+<script>
 import { SearchFlights } from '@/services/SearchFlight';
-import { ref } from 'vue'
 
-const trips = SearchFlights.getFlights();
+export default {
+    data(){
+        return{
+            trips: SearchFlights.getFlights()
+        }
+    },
+    methods:{
+        formatTime(time){
+            let res = time.indexOf(':');
+            let hours = time.slice(0, res);
+            let minuts = time.slice(res+1);
+            if (minuts != '00'){
+                time = hours + " часов\n" + minuts + " минут";
+            }else{
+                time = hours + " часов";
+            }
+            return time;
+        },
+        dateFormat(input_date){
+            return new Date(input_date).toLocaleDateString('ru-RU')
+        }
+    }
+}
 
 </script>
 
@@ -29,19 +50,17 @@ const trips = SearchFlights.getFlights();
                             {{ data.time_trip }} <br>
                         </div>
                         <div class="text-xs">
-                            <!--Стилизовать дату-->
-                            {{ data.date_trip }}
+                            {{ dateFormat(data.date_trip) }}
                         </div>
                         
                         
                     </template>
                 </Column>
 
-                <!--Стилизовать время-->
                 <Column header="Время в пути" field="time_duration_trip">
                     <template #body="{ data }">
-                        <div class="font-bold">
-                            {{ data.time_duration_trip }} <br>
+                        <div class="font-semibold text-sm">
+                            {{ formatTime(data.time_duration_trip) }} <br>
                         </div>
                     </template>
                 </Column>
@@ -63,7 +82,7 @@ const trips = SearchFlights.getFlights();
                             {{ data.time_arrival_trip }} <br>
                         </div>
                         <div class="text-xs">
-                            {{ data.date_arrival_trip }}
+                            {{ dateFormat(data.date_arrival_trip)  }}
                         </div>
                     </template>
                 </Column>
