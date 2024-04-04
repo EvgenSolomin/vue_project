@@ -12,7 +12,7 @@
           </template>
         </Card>
       </div>
-      <div class="sm:col-12 md:col-12 lg:col-8 xl:col-8">
+      <div class="sm:col-12 md:col-12 lg:col-8 xl:col-8" v-if="tripsList.length>0">
         <Card class="bg-cyan-100">
           <template #title>Найдено рейсов: </template>
           <template #content>
@@ -34,15 +34,23 @@
   </div>
 </template>
 
-<script>
+<script setup>
+import { ref, onMounted,provide } from 'vue'
+import { SearchFlights } from '@/services/SearchFlight';
+
 import Search_form from './components/Search_form/Search_form.vue';
 import Passengers_list from './components/Passengers_list/P_main.vue'
 import Flight_list from './components/Flight_list/Flight_list_form.vue'
-export default{
-    components:{
-      Search_form, Passengers_list, Flight_list
-    }
-  }
+
+const tripsList=ref([])
+const arivalDate=ref(new Date())
+
+const searchTrips=async(from,to,date)=>{
+  tripsList.value=await SearchFlights.getAllFlight(from.id_from,to.id_to,date)
+}
+
+provide('DATA_FROM_FLF', {tripsList,arivalDate,searchTrips})
+
 </script>
 
 <style scoped>

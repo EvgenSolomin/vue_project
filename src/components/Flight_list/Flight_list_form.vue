@@ -1,41 +1,40 @@
-<script>
+<script setup>
 import { SearchFlights } from '@/services/SearchFlight';
+import { ref, onMounted,inject,toRef,toRefs } from 'vue'
+const {tripsList,searchTrips}  = toRefs(inject('DATA_FROM_FLF'))
 
-export default {
-    data(){
-        return{
-            trips: SearchFlights.getFlights()
-        }
-    },
-    methods:{
-        formatTime(time){
-            let res = time.indexOf(':');
-            let hours = time.slice(0, res);
-            let minuts = time.slice(res+1);
-            if (minuts != '00')
-                time = hours + " часов\n" + minuts + " минут";
-            else
-                time = hours + " часов";
-            return time;
-        },
-        dateFormat(input_date){
-            return new Date(input_date).toLocaleDateString('ru-RU')
-        },
-        countAvailableSeatsTrip(available_seats){
-            if(available_seats == 0)
-                return " - "
-            else
-                return available_seats
-        }
+const formatTime=(time)=>{
+    if(!time){
+        return false
     }
+    let res = time.indexOf(':');
+    let hours = time.slice(0, res);
+    let minuts = time.slice(res+1);
+    if (minuts != '00')
+        time = hours + " часов\n" + minuts + " минут";
+    else
+        time = hours + " часов";
+    return time;
 }
+const dateFormat=(input_date)=>{
+    return new Date(input_date).toLocaleDateString('ru-RU')
+}
+const countAvailableSeatsTrip=(available_seats)=>{
+    if(available_seats == 0)
+        return " - "
+    else
+        return available_seats
+}
+    
+
 
 </script>
 
 <template>
-    <div class="overflow-hidden">
+    <div class="overflow-hidden" v-if="tripsList.length>0">
+        
         <div class="overflow-auto border-round border-1 border-primary-500" style="height: 470px">
-            <DataTable :value="trips" dataKey="id_trip" stripedRows >
+            <DataTable :value="tripsList" dataKey="id_trip" stripedRows >
                 <Column header="Город отправления">
                     <template #body="{ data }">
                         <div class="font-bold">
