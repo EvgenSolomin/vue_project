@@ -35,8 +35,8 @@ export default {
 <template>
     <div class="overflow-hidden">
         <div class="overflow-auto border-round border-1 border-primary-500" style="height: 470px">
-            <DataTable :value="trips" dataKey="id_trip" stripedRows removableSort>
-                <Column header="Город отправления" sortable>
+            <DataTable :value="trips" dataKey="id_trip" stripedRows >
+                <Column header="Город отправления">
                     <template #body="{ data }">
                         <div class="font-bold">
                             {{ data.from_name_point }}<br>
@@ -49,7 +49,7 @@ export default {
                     </template>
                 </Column>
 
-                <Column header="Время отправления" sortable>
+                <Column header="Время отправления" >
                     <template #body="{ data }">
                         <div class="font-bold">
                             {{ data.time_trip }} <br>
@@ -62,7 +62,7 @@ export default {
                     </template>
                 </Column>
 
-                <Column header="Время в пути" sortable>
+                <Column header="Время в пути" >
                     <template #body="{ data }">
                         <div class="font-semibold text-sm">
                             {{ formatTime(data.time_duration_trip) }}
@@ -70,7 +70,7 @@ export default {
                     </template>
                 </Column>
 
-                <Column header="Город прибытия" sortable>
+                <Column header="Город прибытия" >
                     <template #body="{ data }">
                         <div class="font-bold">
                             {{ data.to_name_point }} <br>
@@ -81,7 +81,7 @@ export default {
                     </template>
                 </Column>
 
-                <Column header="Время прибытия" sortable>
+                <Column header="Время прибытия" >
                     <template #body="{ data }">
                         <div class="font-bold">
                             {{ data.time_arrival_trip }} <br>
@@ -92,7 +92,7 @@ export default {
                     </template>
                 </Column>
 
-                <Column header="Места" sortable>
+                <Column header="Места">
                     <template #body="{ data }">
                         <div class="font-bold">
                             {{ countAvailableSeatsTrip( data.count_available_seats_trip ) }}
