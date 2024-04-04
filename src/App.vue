@@ -1,7 +1,7 @@
 <template>
   <div class="content m-2">
     <div class="grid">
-      <div class="sm:col-6 md:col-6 lg:col-4 xl:col-4" >
+      <div class="sm:col-12 md:col-12 lg:col-4 xl:col-4" >
         <Card class="bg-cyan-100">
           <template #title>Bilet-check.ru <br> билеты на автобус</template>
           <template #content >
