@@ -46,17 +46,12 @@ import Flight_list from './components/Flight_list/Flight_list_form.vue'
 
 const tripsList=ref([])
 const arivalDate=ref(new Date())
-const message=ref(false)
 const searchTrips=async(from,to,date)=>{
   tripsList.value=await SearchFlights.getAllFlight(from.id_from,to.id_to,date)
   if (tripsList.value.length<1){
     toast.add({ severity: 'info', summary: 'К сожалению по вашему запросу рейсов не найдено :(' });
   }
   
-}
-const onReply = () => {
-    toast.removeGroup('bc');
-    visible.value = false;
 }
 
 provide('DATA_FROM_FLF', {tripsList,arivalDate,searchTrips})
