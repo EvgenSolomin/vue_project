@@ -15,7 +15,8 @@ import FloatLabel from 'primevue/floatlabel';
 import Dropdown from 'primevue/dropdown';
 import Card from 'primevue/card';
 import Panel from 'primevue/panel';
-
+import Toast from 'primevue/toast';
+import ToastService from 'primevue/toastservice';
 import DataTable from 'primevue/datatable';
 import Column from 'primevue/column';
 import ColumnGroup from 'primevue/columngroup';   // optional
@@ -143,6 +144,8 @@ app.use(PrimeVue, {
                }
     }
 })
+app.use(ToastService)
+app.component('Toast', Toast)
 app.component('Button', Button)
 app.component('Calendar', Calendar)
 app.component('InputText', InputText)
