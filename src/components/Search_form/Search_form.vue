@@ -1,9 +1,9 @@
 <template>
-    <div class="w-full p-1 " >
-        <Route class="m-1 w-full border-round border-1 border-cyan-500" />
-        <Passengers class="m-1 w-full border-round border-1 border-cyan-500" />
-        <Dates class="m-1 w-full border-round border-1 border-cyan-500" />
-        <Submit class="m-1 w-full " />
+    <div class="grig" >
+        <Route class="col-12 m-1 border-round border-1 border-cyan-500" />
+        <Passengers class="col-12 m-1 border-round border-1 border-cyan-500" />
+        <Dates class="col-12 m-1 border-round border-1 border-cyan-500" />
+        <Submit class="m-1 justify-content-end" />
     </div>
     <div class="grid">
       <div class="col-12" >
@@ -13,7 +13,7 @@
 </template>
   
 <script setup>
-import { ref, onMounted,provide } from 'vue'
+import { ref, onMounted, provide } from 'vue'
 import Route from './Route.vue'
 import Passengers from './Passengers.vue'
 import Dates from './Dates.vue'
@@ -24,7 +24,7 @@ const pointB = ref()
 const selectedPointA=ref('')
 const selectedPointB=ref('')
 
-const updateselectedPointA=(newVal)=> {
+const updateselectedPointA=(newVal)=> {//????????
   selectedPointA.value = newVal.value
 }
 const updateselectedPointB=(newVal)=> {
@@ -32,7 +32,7 @@ const updateselectedPointB=(newVal)=> {
 }
 
 
-provide('DATA_TO_ROUTE_pointA', pointA.value)
+provide('DATA_TO_ROUTE_pointA', pointA.value) //??????????
 provide('DATA_TO_ROUTE_pointB', pointB.value)
 provide('DATA_TO_ROUTE_selectedPointA', {selectedPointA, updateselectedPointA})
 provide('DATA_TO_ROUTE_selectedPointB', {selectedPointB, updateselectedPointB})

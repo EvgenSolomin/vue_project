@@ -6,7 +6,7 @@
         <Card class="bg-cyan-100">
           <template #title>Bilet-check.ru <br> билеты на автобус</template>
           <template #content >
-            <div class="flex h-27rem align-items-center">
+            <div class="grid h-27rem align-items-center col-12">
               <Search_form />
             </div>
           </template>
