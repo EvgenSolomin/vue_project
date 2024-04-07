@@ -24,7 +24,7 @@ const pointB = ref()
 const selectedPointA=ref('')
 const selectedPointB=ref('')
 
-const updateselectedPointA=(newVal)=> {//????????
+const updateselectedPointA=(newVal)=> { 
   selectedPointA.value = newVal.value
 }
 const updateselectedPointB=(newVal)=> {
@@ -32,7 +32,7 @@ const updateselectedPointB=(newVal)=> {
 }
 
 
-provide('DATA_TO_ROUTE_pointA', pointA.value) //??????????
+provide('DATA_TO_ROUTE_pointA', pointA.value)
 provide('DATA_TO_ROUTE_pointB', pointB.value)
 provide('DATA_TO_ROUTE_selectedPointA', {selectedPointA, updateselectedPointA})
 provide('DATA_TO_ROUTE_selectedPointB', {selectedPointB, updateselectedPointB})

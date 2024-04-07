@@ -47,6 +47,7 @@ import Flight_list from './components/Flight_list/Flight_list_form.vue'
 const tripsList=ref([])
 const arivalDate=ref(new Date())
 const searchTrips=async(from,to,date)=>{
+  tripsList.value=[]
   tripsList.value=await SearchFlights.getAllFlight(from.id_from,to.id_to,date)
   if (tripsList.value.length<1){
     toast.add({ severity: 'info', summary: 'К сожалению по вашему запросу рейсов не найдено :(' });

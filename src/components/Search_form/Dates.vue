@@ -11,12 +11,12 @@
 
 <script setup>
 import { ref, onMounted,inject,toRef,toRefs } from 'vue'
-const {arivalDate,searchTrips}  = toRefs(inject('DATA_FROM_FLF'))//?????
+const {arivalDate,searchTrips}  = toRefs(inject('DATA_FROM_FLF'))
 
 const check = false
 const p_from = null
 const p_to = null
-const minDate = new Date() //??????
+const minDate = new Date()
 
 const one_way=()=>{
     if(this.check){

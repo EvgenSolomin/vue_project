@@ -47,20 +47,16 @@ import { ref, onMounted,inject,toRef,toRefs } from 'vue'
 import { SearchFlights } from '@/services/SearchFlight';
 const pointA  = toRef(inject('DATA_TO_ROUTE_pointA'))
 const pointB  = toRef(inject('DATA_TO_ROUTE_pointB'))
-const {selectedPointA, updateselectedPointA}  = toRefs(inject('DATA_TO_ROUTE_selectedPointA')) //????????
+const {selectedPointA, updateselectedPointA}  = toRefs(inject('DATA_TO_ROUTE_selectedPointA'))
 const {selectedPointB, updateselectedPointB}  = toRefs(inject('DATA_TO_ROUTE_selectedPointB'))
 const rev = ref()
 
 const reverse=()=>{
-//   rev.value = pointA.value;
-//   pointA.value = pointB.value;
-//   pointB.value = rev.value;
   rev.value = selectedPointA.value
   updateselectedPointA(selectedPointB)
   updateselectedPointB(rev)
 
 }
-// console.log(pointA)
 onMounted(async() => {
  
   pointA.value=await SearchFlights.getAllFrom()
