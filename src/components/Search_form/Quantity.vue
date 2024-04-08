@@ -7,19 +7,20 @@
 </template>
 
 <script setup>
-import {ref} from 'vue'
+import {ref, inject, toRef} from 'vue'
 
-const p_type = defineProps({
-    passengers_type: String
+const p_object = defineProps({
+    passengers: Number
 })
+
+
+const passengers = p_object.passengers
+//console.log(passengers.value)
 let default_passagers = null;
-
-if(p_type.passengers_type == "adult")
-    default_passagers = 1;
-else
-    default_passagers = 0;
-
-const passengers = ref(default_passagers)
+if (passengers.value == 1)
+    default_passagers = 1
+if (passengers.value == 0)
+    default_passagers = 0
 
 function raise(increase){
     if(increase)

@@ -2,19 +2,16 @@
     <div class=" flex flex-row justify-content-center" >
         <div class="flex flex-row justify-content-center align-items-center m-1">
             <span>Взрослый</span>
-            <Quantity :passengers_type="passengers_type.adult"/>
+            <Quantity :passengers="passengers.adult"/>
         </div>
         <div class="flex flex-row justify-content-center align-items-center m-1">
             <span>Детский</span>
-            <Quantity :passengers_type="passengers_type.child"/>
+            <Quantity :passengers="passengers.child"/>
         </div>
     </div>
 </template>
 <script setup>
-import {ref, provide, toRefs} from 'vue'
+import {ref, inject, toRef, toRefs} from 'vue'
 import Quantity from './Quantity.vue';
-const passengers_type = {
-    adult: "adult",
-    child: "child"
-} 
+const passengers = toRefs(inject('PASSENGERS'))
 </script>
