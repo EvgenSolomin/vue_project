@@ -13,20 +13,11 @@ const p_object = defineProps({
     passengers: Number
 })
 
-
 const passengers = p_object.passengers
-//console.log(passengers.value)
-let default_passagers = null;
-if (passengers.value == 1)
-    default_passagers = 1
-if (passengers.value == 0)
-    default_passagers = 0
+let default_passagers = passengers.value == 0 ? 0 : 1
 
 function raise(increase){
-    if(increase)
-        this.passengers++
-    else if (!increase && this.passengers > this.default_passagers)
-        this.passengers--
+    increase ? passengers.value++ : passengers.value-- 
 }
 
 

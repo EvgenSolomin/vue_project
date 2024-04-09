@@ -4,43 +4,32 @@ import { ref, onMounted,inject,toRef,toRefs } from 'vue'
 const {tripsList,searchTrips}  = toRefs(inject('DATA_FROM_FLF'))
 
 function formatTime(time){
-    if(!time){
+    if(!time)
         return false
-    }
     let res = time.indexOf(':');
     let hours = time.slice(0, res);
     let minuts = time.slice(res+1);
-    if (minuts != '00')
-        time = hours + " часов\n" + minuts + " минут";
-    else
-        time = hours + " часов";
-    return time;
+    return minuts != '00' ? time = hours + " часов\n" + minuts + " минут" : time = hours + " часов"
 }
 function dateFormat(input_date){
     return new Date(input_date).toLocaleDateString('ru-RU')
 }
 function countAvailableSeatsTrip(available_seats){
-    if(available_seats == 0)
-        return " - "
-    else
-        return available_seats
+    return available_seats == 0 ?  " - " : available_seats
 }
     
-const passengers = toRefs(inject('PASSENGERS'))
-let passengers_sum = passengers.adult.value + passengers.child.value
+const {adult, child} = toRefs(inject('PASSENGERS'))
+let passengers_sum = adult.value + child.value
 
 function label_buy_button(available_seats_trip, adult_price, child_price ){
-    if(available_seats_trip < 1 || available_seats_trip < this.passengers_sum)
+    if(available_seats_trip < 1 || available_seats_trip < passengers_sum)
         return 'Недостаточно мест'
     else 
-        return 'Купить: ' + (adult_price * this.passengers.adult.value + child_price * this.passengers.child.value) + ' руб'
+        return 'Купить: ' + (adult_price * adult.value + child_price * child.value) + ' руб'
 }
 
 function disabled_btn(seats_trip){
-    if(seats_trip < 1 || seats_trip < this.passengers_sum)
-        return true
-    else 
-        return false
+    return seats_trip < 1 || seats_trip < passengers_sum ? true : false
 }
 </script>
 
