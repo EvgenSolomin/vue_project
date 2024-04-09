@@ -3,7 +3,7 @@ import { SearchFlights } from '@/services/SearchFlight';
 import { ref, onMounted,inject,toRef,toRefs } from 'vue'
 const {tripsList,searchTrips}  = toRefs(inject('DATA_FROM_FLF'))
 
-const formatTime=(time)=>{
+function formatTime(time){
     if(!time){
         return false
     }
@@ -16,18 +16,32 @@ const formatTime=(time)=>{
         time = hours + " часов";
     return time;
 }
-const dateFormat=(input_date)=>{
+function dateFormat(input_date){
     return new Date(input_date).toLocaleDateString('ru-RU')
 }
-const countAvailableSeatsTrip=(available_seats)=>{
+function countAvailableSeatsTrip(available_seats){
     if(available_seats == 0)
         return " - "
     else
         return available_seats
 }
     
+const passengers = toRefs(inject('PASSENGERS'))
+let passengers_sum = passengers.adult.value + passengers.child.value
 
+function label_buy_button(available_seats_trip, adult_price, child_price ){
+    if(available_seats_trip < 1 || available_seats_trip < this.passengers_sum)
+        return 'Недостаточно мест'
+    else 
+        return 'Купить: ' + (adult_price * this.passengers.adult.value + child_price * this.passengers.child.value) + ' руб'
+}
 
+function disabled_btn(seats_trip){
+    if(seats_trip < 1 || seats_trip < this.passengers_sum)
+        return true
+    else 
+        return false
+}
 </script>
 
 <template>
@@ -56,8 +70,6 @@ const countAvailableSeatsTrip=(available_seats)=>{
                         <div class="text-xs">
                             {{ dateFormat(data.date_trip) }}
                         </div>
-                        
-                        
                     </template>
                 </Column>
 
@@ -101,7 +113,7 @@ const countAvailableSeatsTrip=(available_seats)=>{
 
                 <Column >
                     <template #body="{ data }">
-                        <Button class="text-sm" :disabled="data.count_available_seats_trip < 1" :label= "data.count_available_seats_trip<1 ? 'Недостаточно мест' : 'Купить: ' + data.full_ticket_price + ' руб'" />
+                        <Button class="text-sm" :disabled="disabled_btn(data.count_available_seats_trip)" :label= "label_buy_button(data.count_available_seats_trip, data.full_ticket_price, data.child_ticket_price)" />
                     </template>
                 </Column>
             </DataTable>
