@@ -54,15 +54,11 @@ const searchTrips=async(from,to,date)=>{
   }
   
 }
-/*const pass = ref({
-  adult: 1,
-  child: 0,
-})*/
+
 const adult = ref(1)
 const child = ref(0)
-const sum = ref()
 provide('DATA_FROM_FLF', {tripsList,arivalDate,searchTrips})
-provide('PASSENGERS', {adult, child, sum})
+provide('PASSENGERS', {adult, child})
 </script>
 
 <style scoped>

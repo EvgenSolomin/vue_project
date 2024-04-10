@@ -10,10 +10,10 @@
         </div>
     </div>
 </template>
+
 <script setup>
 import {ref, inject, toRef, toRefs} from 'vue'
 import Quantity from './Quantity.vue';
 
 const passengers = toRefs(inject('PASSENGERS'))
-
 </script>

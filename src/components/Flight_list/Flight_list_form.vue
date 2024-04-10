@@ -1,11 +1,11 @@
 <script setup>
 import { SearchFlights } from '@/services/SearchFlight';
 import { ref, onMounted,inject,toRef,toRefs } from 'vue'
-const {tripsList,searchTrips}  = toRefs(inject('DATA_FROM_FLF'))
+const {tripsList, searchTrips}  = toRefs(inject('DATA_FROM_FLF'))
 
 function formatTime(time){
     if(!time)
-        return false
+        return '-'
     let res = time.indexOf(':');
     let hours = time.slice(0, res);
     let minuts = time.slice(res+1);
@@ -22,20 +22,16 @@ const {adult, child} = toRefs(inject('PASSENGERS'))
 let passengers_sum = adult.value + child.value
 
 function label_buy_button(available_seats_trip, adult_price, child_price ){
-    if(available_seats_trip < 1 || available_seats_trip < passengers_sum)
-        return 'Недостаточно мест'
-    else 
-        return 'Купить: ' + (adult_price * adult.value + child_price * child.value) + ' руб'
+    return available_seats_trip < 1 || available_seats_trip < passengers_sum ? 'Недостаточно мест' : 'Купить: ' + (adult_price * adult.value + child_price * child.value) + ' руб'
 }
 
-function disabled_btn(seats_trip){
-    return seats_trip < 1 || seats_trip < passengers_sum ? true : false
+function disabled_btn(available_seats_trip){
+    return available_seats_trip < 1 || available_seats_trip < passengers_sum ? true : false
 }
 </script>
 
 <template>
-    <div class="overflow-hidden" v-if="tripsList.length>0">
-        
+    <div class="overflow-hidden" v-if="tripsList.length > 0" >
         <div class="overflow-auto border-round border-1 border-primary-500" style="height: 470px">
             <DataTable :value="tripsList" dataKey="id_trip" stripedRows >
                 <Column header="Город отправления">
