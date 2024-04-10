@@ -19,14 +19,14 @@ function countAvailableSeatsTrip(available_seats){
 }
     
 const {adult, child} = toRefs(inject('PASSENGERS'))
-let passengers_sum = adult.value + child.value
+
 
 function label_buy_button(available_seats_trip, adult_price, child_price ){
-    return available_seats_trip < 1 || available_seats_trip < passengers_sum ? 'Недостаточно мест' : 'Купить: ' + (adult_price * adult.value + child_price * child.value) + ' руб'
+    return available_seats_trip < 1 || available_seats_trip < (adult.value + child.value) ? 'Недостаточно мест' : 'Купить: ' + (adult_price * adult.value + child_price * child.value) + ' руб'
 }
 
 function disabled_btn(available_seats_trip){
-    return available_seats_trip < 1 || available_seats_trip < passengers_sum ? true : false
+    return available_seats_trip < 1 || available_seats_trip < (adult.value + child.value) ? true : false
 }
 </script>
 
