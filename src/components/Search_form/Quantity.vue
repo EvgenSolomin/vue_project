@@ -11,7 +11,7 @@ import {ref, inject, toRef} from 'vue'
 
 const p_object = defineProps(['passengers'])
 const passengers = p_object.passengers
-let default_passengers = passengers.value == 0 ? 0 : 1
+const default_passengers = passengers.value
 
 function raise(increase){
     increase ? passengers.value++ : passengers.value-- 

@@ -1,10 +1,7 @@
 <template>
-    <Card class="card">
-        <template #title>
-            <h4>Список пассажиров</h4>
-        </template>
+    <Card>
         <template #content >
-            <div class="grid col-3 border-round border-1 border-cyan-500">
+            <div class="grid border-round border-1 border-cyan-500" style="width: 300px;">
                 <InputText class="w-full m-1" v-model="passeger.name" placeholder="Фамилия" />
                 <InputText class="w-full m-1"  v-model="passeger.surname" placeholder="Имя"/>
                 <InputText class="w-full m-1" v-model="passeger.patronymic" placeholder="Отчество"/>
@@ -31,8 +28,8 @@ let passeger = ref({
                 doc: null,
                 passport: null
             })
-const sexarr = ref(['Мужской', 'Женский'])
-const docarr = ref(['Паспорт'])
+const sexarr = ['Мужской', 'Женский']
+const docarr = ['Паспорт']
 
 </script>
 
