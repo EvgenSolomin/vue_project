@@ -48,17 +48,16 @@ const tripsList=ref([])
 const arivalDate=ref(new Date())
 const searchTrips=async(from,to,date)=>{
   tripsList.value=[]
-  tripsList.value=await SearchFlights.getAllFlight(from.id_from,to.id_to,date)
+  tripsList.value=await SearchFlights.getAllFlight(from.id_from, to.id_to,date)
   if (tripsList.value.length<1){
     toast.add({ severity: 'info', summary: 'К сожалению по вашему запросу рейсов не найдено :(' });
   }
-  
 }
 
 const adult = ref(1)
 const child = ref(0)
 provide('DATA_FROM_FLF', {tripsList,arivalDate,searchTrips})
-provide('PASSENGERS', {adult, child})
+provide('DATA_FROM_PASSENGERS', {adult, child})
 </script>
 
 <style scoped>

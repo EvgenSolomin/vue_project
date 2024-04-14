@@ -6,9 +6,9 @@ const {tripsList, searchTrips}  = toRefs(inject('DATA_FROM_FLF'))
 function formatTime(time){
     if(!time)
         return '-'
-    let res = time.indexOf(':');
-    let hours = time.slice(0, res);
-    let minuts = time.slice(res+1);
+    let res = time.indexOf(':')
+    let hours = time.slice(0, res)
+    let minuts = time.slice(res+1)
     return minuts != '00' ? time = hours + " часов\n" + minuts + " минут" : time = hours + " часов"
 }
 function dateFormat(input_date){
@@ -42,8 +42,6 @@ function disabled_btn(available_seats_trip){
                         <div class="text-xs">
                             {{ data.from_name }}
                         </div>
-                         
-                        
                     </template>
                 </Column>
 

@@ -19,8 +19,8 @@ import Passengers from './Passengers.vue'
 import Dates from './Dates.vue'
 import Submit from './Submit.vue'
 
-const pointA = ref()
-const pointB = ref()
+const pointsA = ref()
+const pointsB = ref()
 const selectedPointA=ref('')
 const selectedPointB=ref('')
 
@@ -32,8 +32,8 @@ const updateselectedPointB=(newVal)=> {
 }
 
 
-provide('DATA_TO_ROUTE_pointA', pointA.value)
-provide('DATA_TO_ROUTE_pointB', pointB.value)
+provide('DATA_TO_ROUTE_pointA', pointsA.value)
+provide('DATA_TO_ROUTE_pointB', pointsB.value)
 provide('DATA_TO_ROUTE_selectedPointA', {selectedPointA, updateselectedPointA})
 provide('DATA_TO_ROUTE_selectedPointB', {selectedPointB, updateselectedPointB})
 

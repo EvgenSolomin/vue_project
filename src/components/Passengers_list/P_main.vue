@@ -1,5 +1,5 @@
 <template>
-    <div v-for="i in adult.value + child.value">
+    <div>
         <P_form/>
     </div>
 </template>
@@ -8,5 +8,5 @@
 import P_form from './P_form.vue'
 import {ref, inject, toRef, toRefs} from 'vue'
 
-const {adult, child} = toRefs(inject('PASSENGERS'))
+const {adult, child} = toRefs(inject('DATA_FROM_PASSENGERS'))
 </script>

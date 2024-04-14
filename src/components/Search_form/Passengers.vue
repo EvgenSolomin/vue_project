@@ -15,6 +15,6 @@
 import {ref, inject, toRef, toRefs} from 'vue'
 import Quantity from './Quantity.vue';
 
-const passengers = toRefs(inject('PASSENGERS'))
+const passengers = toRefs(inject('DATA_FROM_PASSENGERS'))
 
 </script>
