@@ -3,9 +3,9 @@
     <Dropdown
       v-model="selectedPointA"
       @change="updateselectedPointA($event)"
-      :options="short_list"
+      :options="short_from_list.value"
       filter
-      @filter="create_short_list($event, pointsA)"
+      @filter="create_short_list($event, pointsA, short_from_list)"
       optionLabel="name"
       placeholder="Откуда едем?"
       class="w-full md:w-14rem"
@@ -38,9 +38,9 @@
     <Dropdown
       v-model="selectedPointB"
       @change="updateselectedPointB($event)"
+      :options="short_to_list.value"
       filter
-      @filter="create_short_list($event, pointsB)"
-      :options="short_list"
+      @filter="create_short_list($event, pointsB, short_to_list)"
       optionLabel="name"
       placeholder="Куда едем?"
       class="w-full md:w-14rem"
@@ -90,18 +90,17 @@ function reverse() {
   }
 }
 
-const short_list = ref([])
-function create_short_list(filter, arr){
+const short_from_list = ref([])
+const short_to_list = ref([])
+function create_short_list(filter, arr, short_list){
   short_list.value = []
   const str = filter.value[0].toUpperCase() + filter.value.slice(1)
-  //console.log(arr)
   if(str.length > 0){
-    short_list.value = arr.filter((point) => {
-      return point.name.substring(0, str.length) == str
-    })
+    short_list.value = arr.filter((point) => point.name.substring(0, str.length) == str )
   }
-  
 }
+
+//console.log(short_list)
 
 onMounted(async () => {
   pointsA.value = await SearchFlights.getAllFrom();
