@@ -77,6 +77,11 @@ const { selectedPointB, updateselectedPointB } = toRefs(
   inject("DATA_TO_ROUTE_selectedPointB")
 );
 
+onMounted(async () => {
+  pointsA.value = await SearchFlights.getAllFrom();
+  pointsB.value = await SearchFlights.getAllTo();
+})
+
 const rev = ref()
 function reverse() {
   if(selectedPointA.value != '' && selectedPointB.value != ''){
@@ -84,29 +89,15 @@ function reverse() {
     selectedPointA.value = pointsA.value.filter((point_a) => point_a.name == selectedPointB.value.name)[0]
     selectedPointB.value = pointsB.value.filter((point_b) => point_b.name == rev.value.name)[0]
   }
-  else{
-    selectedPointA.value = ''
-    selectedPointB.value = ''
-  }
 }
 
 const short_from_list = ref([])
 const short_to_list = ref([])
 function create_short_list(filter, arr, short_list){
-  short_list.value = []
   const str = filter.value[0].toUpperCase() + filter.value.slice(1)
-  if(str.length > 0){
-    short_list.value = arr.filter((point) => point.name.substring(0, str.length) == str )
-  }
+  if(str.length > 0)
+    short_list.value = arr.filter((point) => point.name.substring(0, str.length) == str)
 }
-
-//console.log(short_list)
-
-onMounted(async () => {
-  pointsA.value = await SearchFlights.getAllFrom();
-  pointsB.value = await SearchFlights.getAllTo();
-  
-});
 </script>
 
 <style scoped></style>
