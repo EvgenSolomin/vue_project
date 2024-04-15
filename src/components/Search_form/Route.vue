@@ -94,9 +94,14 @@ function reverse() {
 const short_from_list = ref([])
 const short_to_list = ref([])
 function create_short_list(filter, arr, short_list){
-  const str = filter.value[0].toUpperCase() + filter.value.slice(1)
-  if(str.length > 0)
-    short_list.value = arr.filter((point) => point.name.substring(0, str.length) == str)
+ 
+  // const str = filter.value[0].toUpperCase() + filter.value.slice(1)
+  if(filter.value.length > 0){
+    short_list.value = arr.filter((point) => point.name.toUpperCase().includes(filter.value.toUpperCase()))
+  }else{
+    short_list.value = []
+  }
+
 }
 </script>
 

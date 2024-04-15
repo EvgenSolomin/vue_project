@@ -18,7 +18,7 @@ function countAvailableSeatsTrip(available_seats){
     return available_seats == 0 ?  " - " : available_seats
 }
     
-const {adult, child} = toRefs(inject('PASSENGERS'))
+const {adult, child} = toRefs(inject('DATA_FROM_PASSENGERS'))
 
 
 function label_buy_button(available_seats_trip, adult_price, child_price ){
