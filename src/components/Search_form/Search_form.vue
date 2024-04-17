@@ -1,13 +1,13 @@
 <template>
-  <div class="sm:col-12 md:col-12 lg:col-4 xl:col-4" >
-      <Card class="bg-cyan-100">
+  <div class="sm:col-12 md:col-12 lg:col-4 xl:col-4 " >
+      <Card class="bg-cyan-100 h-full flex justify-content-center">
         <template #title>Bilet-check.ru <br> билеты на автобус</template>
-        <template #content >
-          <div class="grid h-27rem align-items-center col-12">
-            <Route class="col-12 m-1 border-round border-1 border-cyan-500" />
-            <Passengers class="col-12 m-1 border-round border-1 border-cyan-500" />
-            <Dates class="col-12 m-1 border-round border-1 border-cyan-500" />
-            <Submit class="m-1 justify-content-end" />
+        <template #content>
+          <div class="col-12 " >
+            <Route class="mt-2 col-12 border-round border-1 border-cyan-500" />
+            <Passengers class="mt-2 border-round border-1 border-cyan-500" />
+            <Dates class="my-2 border-round border-1 border-cyan-500" />
+            <Submit />
           </div>
         </template>
       </Card>
@@ -25,7 +25,7 @@ const pointsA = ref()
 const pointsB = ref()
 const selectedPointA=ref('')
 const selectedPointB=ref('')
-const arivalDate=ref(new Date())
+const arivalDate=ref()//new Date()
 
 const updateselectedPointA=(newVal)=> { 
   selectedPointA.value = newVal.value

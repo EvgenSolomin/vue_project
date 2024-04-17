@@ -1,5 +1,5 @@
 <template>
-  <div class="grid justify-content-center align-items-center w-full">
+  <div class="inline-flex justify-content-center">
     <Dropdown
       v-model="selectedPointA"
       @change="updateselectedPointA($event)"

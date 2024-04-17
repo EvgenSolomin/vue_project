@@ -1,7 +1,7 @@
 <template>
     <div class="overflow-hidden" >
-        <div class="overflow-auto border-round border-1 border-primary-500">
-            <DataTable :value="tripsList" dataKey="id_trip" stripedRows >
+        <div class="overflow-auto h-auto border-round border-1 border-primary-500">
+            <DataTable :value="tripsList" dataKey="id_trip" stripedRows scrollable scrollHeight="23rem" >
                 <Column header="Город отправления">
                     <template #body="{ data }">
                         <div class="font-bold">
@@ -64,7 +64,7 @@
 
                 <Column >
                     <template #body="{ data }">
-                        <Button class="text-sm" :disabled="disabled_btn(data.count_available_seats_trip)" :label= "label_buy_button(data.count_available_seats_trip, data.full_ticket_price, data.child_ticket_price)" />
+                        <Button class="text-sm" @click="buy_btn_click" :disabled="disabled_btn(data.count_available_seats_trip)" :label= "label_buy_button(data.count_available_seats_trip, data.full_ticket_price, data.child_ticket_price)" />
                     </template>
                 </Column>
             </DataTable>
@@ -76,7 +76,11 @@
 import { SearchFlights } from '@/services/SearchFlight';
 import { ref, onMounted,inject,toRef,toRefs } from 'vue'
 const tripsList = toRef(inject('DATA_FROM_FLF'))
-//const tripsList = defineProps(['tripsList'])
+const show_form = toRef(inject('DATA_TO_FL'))
+
+function buy_btn_click(){
+    show_form.value = true
+}
 
 function formatTime(time){
     if(!time)
@@ -100,6 +104,6 @@ function label_buy_button(available_seats_trip, adult_price, child_price ){
 }
 
 function disabled_btn(available_seats_trip){
-    return available_seats_trip < 1 || available_seats_trip < (adult.value + child.value) ? true : false
+    return available_seats_trip < 1 || available_seats_trip < (adult.value + child.value) || show_form ? true : false
 }
 </script>

@@ -5,16 +5,16 @@ const tripsList = toRef(inject('DATA_FROM_FLF'))
 </script>
 
 <template>
-    <div class="sm:col-12 md:col-12 lg:col-8 xl:col-8" >
-        <Card class="bg-cyan-100 h-full" v-if="tripsList.length > 0" >
+    <div class="sm:col-12 md:col-12 lg:col-8 xl:col-8 flex" >
+        <Card class="bg-cyan-100" v-if="tripsList.length > 0" >
             <template #title>Найдено рейсов ({{ tripsList.length }}): </template>
             <template #content>
                 <Flight_list />
             </template>
         </Card>
-        <Card class="bg-cyan-100 h-full flex justify-content-center align-items-center" v-else >
+        <Card v-else class="h-full w-full bg-cyan-100 flex justify-content-center align-items-center">
             <template #content>
-                Список рейсов пуст
+                <span>Список рейсов пуст</span>
             </template>
         </Card>
       </div>
