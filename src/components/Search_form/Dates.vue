@@ -5,6 +5,7 @@
       placeholder="Дата отправления"
       v-model="arivalDate"
       :minDate="minDate"
+      showIcon 
     />
     <!-- <div class="flex justify-content-end flex-wrap" >
                 <Button @click="one_way" icon="pi pi-arrow-right-arrow-left"/>

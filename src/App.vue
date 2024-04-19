@@ -1,14 +1,12 @@
 <template>
-  <div class="content">
-    
-    <div class="flex h-30rem">
+  <div class="field">
+    <div class="grid h-30rem">
       <Search_form />
       <Flight_list/>
     </div>
-    <div class="col-12">
-      <Passengers_list/>
+    <div class="grid">
+      <Passengers_list class="col-12"/>
     </div>
-      
     <Toast />
   </div>
 </template>
@@ -17,16 +15,19 @@
 import { ref, onMounted,provide } from 'vue'
 import Search_form from './components/Search_form/Search_form.vue'
 import Flight_list from './components/Flight_list/Flight_list_form.vue'
-import Passengers_list from './components/Passengers_list/Passengers_list.vue';
+import Passengers_list from './components/Passengers_list/Passengers_list_form.vue';
 
 const tripsList=ref([])
 
 const adult = ref(1)
 const child = ref(0)
 const show_form = ref(false)
+const passengers_list = []
+
 provide('DATA_FROM_FLF', tripsList)
 provide('DATA_TO_FL', show_form)
 provide('DATA_FROM_PASSENGERS', {adult, child})
+provide('DATA_TO_p-list', passengers_list)
 </script>
 
 <style scoped>
