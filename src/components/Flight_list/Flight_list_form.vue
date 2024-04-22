@@ -2,34 +2,35 @@
 import { ref, onMounted,inject,toRef,toRefs } from 'vue'
 const tripsList = toRef(inject("DATA_FROM_FLF"));
 const show_form = toRef(inject("DATA_TO_FL"));
-const passengers_list = toRef(inject('DATA_TO_p-list'))
-const data_passenger = {
-    id: null,
-    name: null,
-    surname: null,
-    patronymic: null,
-    bd: null,
-    sex:null,
-    nationality: null,
-    doc: null,
-    passport: null
-}
-const data_passenger_copy = ref()
+// const passengers_list = toRef(inject('DATA_TO_p-list'))
+// const data_passenger = {
+//     id: null,
+//     name: null,
+//     surname: null,
+//     patronymic: null,
+//     bd: null,
+//     sex:null,
+//     nationality: null,
+//     doc: null,
+//     passport: null
+// }
+// const data_passenger_copy = ref()
 const { adult, child } = toRefs(inject("DATA_FROM_PASSENGERS"));
 
 function buy_btn_click() {
     show_form.value = true;
-    if(passengers_list.value.length < (adult.value+child.value)){
-        for(let i = passengers_list.value.length; i < (adult.value+child.value); i++){
-            data_passenger_copy.value = structuredClone(data_passenger)
-            passengers_list.value.push(data_passenger_copy.value)
-            passengers_list.value[i].id = i
-        }
-    }else{
-        for(let i = passengers_list.value.length; i > (adult.value+child.value); i--){
-            passengers_list.value.pop()
-        }
-    }
+    // if(passengers_list.value.length < (adult.value+child.value)){
+    //     for(let i = passengers_list.value.length; i < (adult.value+child.value); i++){
+    //         // data_passenger_copy.value = structuredClone(data_passenger)
+    //         passengers_list.value.push(data_passenger)
+    //         passengers_list.value[i].id = i
+    //         console.log(passengers_list.value)
+    //     }
+    // }else{
+    //     for(let i = passengers_list.value.length; i > (adult.value+child.value); i--){
+    //         passengers_list.value.pop()
+    //     }
+    // }
 }
 
 function formatTime(time) {

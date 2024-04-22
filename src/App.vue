@@ -22,7 +22,18 @@ const tripsList=ref([])
 const adult = ref(1)
 const child = ref(0)
 const show_form = ref(false)
-const passengers_list = ref([])
+const passengers_list = ref([{
+    id: 0,
+    name: null,
+    surname: null,
+    patronymic: null,
+    bd: null,
+    sex:null,
+    nationality: null,
+    doc: null,
+    passport: null,
+    child:0,
+}])
 
 provide('DATA_FROM_FLF', tripsList)
 provide('DATA_TO_FL', show_form)

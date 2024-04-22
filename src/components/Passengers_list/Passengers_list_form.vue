@@ -1,6 +1,6 @@
 <script setup>
 import {ref, inject, toRef, toRefs} from 'vue'
-const show_form = toRef(inject('DATA_TO_FL'))
+const show_form =  true //toRef(inject('DATA_TO_FL'))
 const passengers_list = toRef(inject('DATA_TO_p-list'))
 const sexarr = ['Мужской', 'Женский']
 const docarr = ['Паспорт', 'Свид-во о рождении']
@@ -13,7 +13,7 @@ const docarr = ['Паспорт', 'Свид-во о рождении']
             <template #content>
                 <div class="w-23rem flex flex-row">
                     <Card v-for="(passenger, index) in passengers_list" :key="index" class="mx-2">
-                        <template #title>Пассажир №{{ index + 1 }}</template>
+                        <template #title>Пассажир №{{ index + 1 }} <span v-if="passenger.child">Детский</span></template>
                         <template #content >
                             <div class="flex flex-column bg-surface-300 w-20rem p-2 border-round border-1 border-cyan-500">
                                 <InputText placeholder="Фамилия" v-model="passenger.name" />

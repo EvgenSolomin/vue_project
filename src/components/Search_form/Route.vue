@@ -70,6 +70,7 @@ import { ref, onMounted, inject, toRef, toRefs } from "vue";
 import { SearchFlights } from "@/services/SearchFlight";
 const pointsA = toRef(inject("DATA_TO_ROUTE_pointA"));
 const pointsB = toRef(inject("DATA_TO_ROUTE_pointB"));
+const tripsList = toRef(inject("DATA_FROM_FLF"));
 const { selectedPointA, updateselectedPointA } = toRefs(
   inject("DATA_TO_ROUTE_selectedPointA")
 );
@@ -88,6 +89,8 @@ function reverse() {
     rev.value = selectedPointA.value
     selectedPointA.value = pointsA.value.filter((point_a) => point_a.name == selectedPointB.value.name)[0]
     selectedPointB.value = pointsB.value.filter((point_b) => point_b.name == rev.value.name)[0]
+    tripsList.value=[]
+
   }
 }
 
