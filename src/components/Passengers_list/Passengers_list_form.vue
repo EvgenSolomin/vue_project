@@ -1,9 +1,22 @@
 <script setup>
-import {ref, inject, toRef, toRefs} from 'vue'
-const show_form = toRef(inject('DATA_TO_FL'))
+import {ref, inject, toRef, toRefs,onMounted} from 'vue'
+import { ReferenceBookService } from "@/services/ReferenceBookService";
+const show_form =  true //toRef(inject('DATA_TO_FL'))
 const passengers_list = toRef(inject('DATA_TO_p-list'))
 const sexarr = ['Мужской', 'Женский']
 const docarr = ['Паспорт', 'Свид-во о рождении']
+const citezenshipsOption=ref([])
+onMounted(async() => {
+    await ReferenceBookService.loadNationalityList()
+            .then((data)=>{
+                citezenshipsOption.value=data
+                console.log(citezenshipsOption.value)
+            })
+            .catch((error)=>{
+               console.log(error)
+            })
+              
+});
 </script>
 
 <template>
