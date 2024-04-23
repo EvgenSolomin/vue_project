@@ -53,5 +53,5 @@ export const SearchFlights = {
             return res
 
     },
-
+    
 };
