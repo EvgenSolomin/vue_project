@@ -7,14 +7,12 @@ const sexarr = ['Мужской', 'Женский']
 const docarr = ['Паспорт', 'Свид-во о рождении']
 const citezenshipsOption=ref([])
 onMounted(async() => {
-    await ReferenceBookService.loadNationalityList()
-            .then((data)=>{
-                citezenshipsOption.value=data
-                console.log(citezenshipsOption.value)
-            })
-            .catch((error)=>{
-               console.log(error)
-            })
+    await  ReferenceBookService.loadNationalityList()
+    .then(response => response.json())
+    .then(result =>  citezenshipsOption.value=result.result)
+    .catch((error)=>{
+        console.log(error)
+    })
               
 });
 </script>
@@ -35,7 +33,14 @@ onMounted(async() => {
                                 <InputText placeholder="Отчество" v-model="passenger.patronymic"/>
                                 <Calendar placeholder="Дата рождения" showIcon  v-model="passenger.bd"/>
                                 <Dropdown placeholder="Пол" :options="sexarr" v-model="passenger.sex"/>
-                                <InputText placeholder="Гражданство" v-model="passenger.nationality"/>
+                                <Dropdown 
+                                    :options="citezenshipsOption" 
+                                    filter 
+                                    optionLabel="name"
+                                    optionValue="code"
+                                    v-model="passenger.nationality" 
+                                    placeholder="Гражданство" 
+                                />
                                 <Dropdown placeholder="Документ" :options="docarr" v-model="passenger.doc"/>
                                 <InputMask placeholder="Серия/Номер паспорта" mask="9999/999-999" v-if="passenger.doc == 'Паспорт'" v-model="passenger.passport"/>
                             </div>
