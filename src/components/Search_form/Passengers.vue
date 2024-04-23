@@ -2,11 +2,11 @@
     <div class=" flex flex-row justify-content-center" >
         <div class="flex flex-row justify-content-center align-items-center m-1">
             <span>Взрослый</span>
-            <Quantity :passengers="passengers.adult" @get-passengers="creat_passengers_list" />
+            <Quantity :passengers="passengers.adult" @plus="adult_plus" />
         </div>
         <div class="flex flex-row justify-content-center align-items-center m-1">
             <span>Детский </span>
-            <Quantity :passengers="passengers.child" @get-passengers="creat_child_list"/>
+            <Quantity :passengers="passengers.child" @plus="child_plus"/>
         </div>
     </div>
 </template>
@@ -29,72 +29,27 @@ const data_passenger = {
     passport: null,
     child:0
 }
-function creat_passengers_list(){
+function adult_plus(){
     let p_length = passengers.adult.value + passengers.child.value
-    console.log(passengers_list.length + " "+p_length)
-    let arr_adult = passengers_list.filter((passenger) => passenger.child == 0)
-    let arr_child = passengers_list.filter((passenger) => passenger.child != 0)
-    if(passengers_list.value.length < p_length){
-        arr_adult.push({...data_passenger})
-    }
-    console.log(arr_adult)
-    console.log(arr_child)
-    // if(passengers_list.value.length > p_length && passengers.adult.value > 1){
-    //     arr_adult.pop()
-    // }
-    passengers_list.value={...arr_adult, ...arr_child}
-    for(let i = 0; i < passengers_list.value.length; i++ ){
-        passengers_list.value.id = i
-    }
+    if(passengers_list.value.length < p_length)
+        passengers_list.value.push({...data_passenger})
+    let arr_adult = passengers_list.value.filter((passenger) => passenger.child == 0)
+    let arr_child = passengers_list.value.filter((passenger) => passenger.child != 0)
+    if(passengers_list.value.length > p_length && passengers.adult.value > 0)
+        arr_adult.pop()
+    passengers_list.value=[...arr_adult, ...arr_child]   
+    for(let i = 0; i < passengers_list.value.length; i++ )
+        passengers_list.value[i].id = i
     console.log(passengers_list.value)
 }
-function creat_child_list(){
+function child_plus(){
     let p_length = passengers.adult.value + passengers.child.value
-    console.log(passengers_list.value.length + " "+p_length)
     if(passengers_list.value.length < p_length){
         passengers_list.value.push({...data_passenger})
         passengers_list.value[passengers_list.value.length-1].child = 1
     }
-    if(passengers_list.value.length > p_length && passengers.adult.value > 1){
+    if(passengers_list.value.length > p_length && passengers.adult.value > 1)
         passengers_list.value.pop()
-    }
-    for(let i = 0; i < passengers_list.value.length; i++ ){
-        passengers_list.value.id = i
-    }
     console.log(passengers_list.value)
 }
-
-// 
-    // 
-    // for(let i = passengers_list.value.length; i < p_length; i++){}
-    // console.log('passenger_list: '+passengers_list.value)
-    // arr_adult = 
-    // arr_child = 
-    // {
-    //     thisChild == 0 ? arr_adult.pop() : arr_child.pop()
-    // }
-    // 
-    
-    // 
-
-    
-
-// for(let i = passengers_list.value.length; i > (adult.value+child.value); i--){
-            // =passengers_list.value.filter(passenger=>passenger.child!==thisChild.value)//.pop()
-            // let arr2=passengers_list.value.filter(passenger=>passenger.child==thisChild.value)
-            // thisChild == 0 ? arr1.pop() : arr2.pop()
-            // passengers_list.value = [arr1, arr2]
-            // console.log('arr1: '+arr1.value)
-            // console.log('arr2: '+arr2.value)
-            // 
-            // if (thisChild==1){
-            //     arr2.pop()
-            // }else{
-            //     arr1.pop()
-            // }
-
-            // 
-            // passengers_list.value.pop()
-        // }
-
 </script>

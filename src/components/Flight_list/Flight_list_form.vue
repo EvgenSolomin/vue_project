@@ -2,36 +2,7 @@
 import { ref, onMounted,inject,toRef,toRefs } from 'vue'
 const tripsList = toRef(inject("DATA_FROM_FLF"));
 const show_form = toRef(inject("DATA_TO_FL"));
-// const passengers_list = toRef(inject('DATA_TO_p-list'))
-// const data_passenger = {
-//     id: null,
-//     name: null,
-//     surname: null,
-//     patronymic: null,
-//     bd: null,
-//     sex:null,
-//     nationality: null,
-//     doc: null,
-//     passport: null
-// }
-// const data_passenger_copy = ref()
 const { adult, child } = toRefs(inject("DATA_FROM_PASSENGERS"));
-
-function buy_btn_click() {
-    show_form.value = true;
-    // if(passengers_list.value.length < (adult.value+child.value)){
-    //     for(let i = passengers_list.value.length; i < (adult.value+child.value); i++){
-    //         // data_passenger_copy.value = structuredClone(data_passenger)
-    //         passengers_list.value.push(data_passenger)
-    //         passengers_list.value[i].id = i
-    //         console.log(passengers_list.value)
-    //     }
-    // }else{
-    //     for(let i = passengers_list.value.length; i > (adult.value+child.value); i--){
-    //         passengers_list.value.pop()
-    //     }
-    // }
-}
 
 function formatTime(time) {
   if (!time) return "-";
@@ -129,7 +100,7 @@ function disabled_btn(available_seats_trip) {
                             <template #body="{ data }">
                                 <Button
                                 class="text-sm"
-                                @click="buy_btn_click"
+                                @click="show_form = true"
                                 :disabled="disabled_btn(data.count_available_seats_trip)"
                                 :label="
                                     label_buy_button(
