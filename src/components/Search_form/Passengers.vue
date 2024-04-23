@@ -2,11 +2,11 @@
     <div class=" flex flex-row justify-content-center" >
         <div class="flex flex-row justify-content-center align-items-center m-1">
             <span>Взрослый</span>
-            <Quantity :passengers="passengers.adult" @plus="adult_plus" />
+            <Quantity :passengers="passengers.adult" @creat="creat_adult_list" />
         </div>
         <div class="flex flex-row justify-content-center align-items-center m-1">
             <span>Детский </span>
-            <Quantity :passengers="passengers.child" @plus="child_plus"/>
+            <Quantity :passengers="passengers.child" @creat="creat_child_list"/>
         </div>
     </div>
 </template>
@@ -29,7 +29,7 @@ const data_passenger = {
     passport: null,
     child:0
 }
-function adult_plus(){
+function creat_adult_list(){
     let p_length = passengers.adult.value + passengers.child.value
     if(passengers_list.value.length < p_length)
         passengers_list.value.push({...data_passenger})
@@ -42,7 +42,7 @@ function adult_plus(){
         passengers_list.value[i].id = i
     console.log(passengers_list.value)
 }
-function child_plus(){
+function creat_child_list(){
     let p_length = passengers.adult.value + passengers.child.value
     if(passengers_list.value.length < p_length){
         passengers_list.value.push({...data_passenger})
