@@ -17,11 +17,18 @@ onMounted(async () => {
 
   await DocumentTypes.loadDocTypesList()
     .then((response) => response.json())
-    .then((result) => (docTypes.value = result.result))
+    .then((result) => {
+        docTypes.value = result.result.map((res) => {
+            res.name = res.name.replaceAll("&nbsp;", " ")
+            return res
+        })
+    })
     .catch((error) => {
       console.log(error);
     });
+    
 });
+
 </script>
 
 <template>
@@ -70,7 +77,7 @@ onMounted(async () => {
                   <Dropdown
                     placeholder="Документ"
                     :options="docTypes"
-                    optionLabel="short_name"
+                    optionLabel="name"
                     optionValue="id"
                     v-model="passenger.doc"
                   />
