@@ -35,7 +35,7 @@ function creat_adult_list(){
         passengers_list.value.push({...data_passenger})
     let arr_adult = passengers_list.value.filter((passenger) => passenger.child == 0)
     let arr_child = passengers_list.value.filter((passenger) => passenger.child != 0)
-    if(passengers_list.value.length > p_length && passengers.adult.value > 0)
+    if(passengers_list.value.length > p_length)
         arr_adult.pop()
     passengers_list.value=[...arr_adult, ...arr_child]   
     for(let i = 0; i < passengers_list.value.length; i++ )
@@ -48,7 +48,7 @@ function creat_child_list(){
         passengers_list.value.push({...data_passenger})
         passengers_list.value[passengers_list.value.length-1].child = 1
     }
-    if(passengers_list.value.length > p_length && passengers.adult.value > 1)
+    if(passengers_list.value.length > p_length)
         passengers_list.value.pop()
     console.log(passengers_list.value)
 }
