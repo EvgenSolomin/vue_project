@@ -1,7 +1,7 @@
 <script setup>
 import {ref, inject, toRef, toRefs,onMounted} from 'vue'
 import { ReferenceBookService } from "@/services/ReferenceBookService";
-const show_form =  true//toRef(inject('DATA_TO_FL'))
+const show_form = toRef(inject('DATA_TO_FL'))
 const passengers_list = toRef(inject('DATA_TO_p-list'))
 const sexarr = ['Мужской', 'Женский']
 const docarr = ['Паспорт', 'Свид-во о рождении']
