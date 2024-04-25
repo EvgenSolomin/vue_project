@@ -1,7 +1,6 @@
 <script setup>
 import { ref, inject, toRef, toRefs, onMounted } from "vue";
 import { ReferenceBookService } from "@/services/ReferenceBookService";
-import { DocumentTypes } from "@/services/DocumentTypes.js";
 const show_form = true; //toRef(inject('DATA_TO_FL'))
 const passengers_list = toRef(inject("DATA_TO_p-list"));
 const sexarr = ["Мужской", "Женский"];
@@ -15,7 +14,7 @@ onMounted(async () => {
       console.log(error);
     });
 
-  await DocumentTypes.loadDocTypesList()
+  await ReferenceBookService.loadDocTypesList()
     .then((response) => response.json())
     .then((result) => {
         docTypes.value = result.result.map((res) => {
