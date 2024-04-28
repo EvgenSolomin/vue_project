@@ -24,9 +24,10 @@ const data_passenger = {
     sex:null,
     nationality: null,
     doc: null,
-    passport: null,
+    //passport: null,
     child:0
 }
+
 
 function plus(){
     passengers.value++
@@ -35,10 +36,8 @@ function plus(){
         passengers_list.value[passengers_list.value.length-1].child = thisChild
     let arr_adult = passengers_list.value.filter((passenger) => passenger.child == 0)
     let arr_child = passengers_list.value.filter((passenger) => passenger.child == 1)
-    passengers_list.value=[...arr_adult, ...arr_child]   
-    for(let i = 0; i < passengers_list.value.length; i++ )
-        passengers_list.value[i].id = i
-    //console.log(passengers_list.value)
+    passengers_list.value=[...arr_adult, ...arr_child] 
+    passengers_list.value.forEach((el, i) => el.id = i);
 }
 
 function minus(){
@@ -47,8 +46,7 @@ function minus(){
     let arr_child = passengers_list.value.filter((passenger) => passenger.child == 1)
     thisChild == 0 ? arr_adult.pop() : arr_child.pop()
     passengers_list.value=[...arr_adult, ...arr_child]   
-    for(let i = 0; i < passengers_list.value.length; i++ )
-        passengers_list.value[i].id = i
+    passengers_list.value.forEach((el, i) => el.id = i);
     //console.log(passengers_list.value)
 }
 </script>

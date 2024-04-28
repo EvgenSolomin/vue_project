@@ -31,7 +31,7 @@ const passengers_list = ref([{
     sex:null,
     nationality: null,
     doc: null,
-    passport: null,
+    // passport: null,
     child:0,
 }])
 
