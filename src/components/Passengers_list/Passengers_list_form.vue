@@ -1,11 +1,12 @@
 <script setup>
 import { ref, inject, toRef, toRefs, onMounted } from "vue";
 import { ReferenceBookService } from "@/services/ReferenceBookService";
-const show_form = true; //toRef(inject('DATA_TO_FL'))
+const show_form = true//toRef(inject('DATA_TO_FL'))
 const passengers_list = toRef(inject("DATA_TO_p-list"));
 const sexarr = ["Мужской", "Женский"];
 const citezenshipsOption = ref([]);
 const docTypes = ref([]);
+const clickBtn = ref(false)
 
 function disabled_btn(){
   let arr_pl = []
@@ -17,8 +18,44 @@ function disabled_btn(){
   });
   return arr_pl.includes(true)
 }
-function getClass(index){
-  return passengers_list.value[index].child == 0 ? "": "bg-blue-500"
+
+function getMask(doc_type){
+  if(doc_type == "0")
+    return "9999 999999";
+  else if(doc_type == "2")
+    return "99 999-999";
+  else if(doc_type == "4")
+    return "aa-aa 999-999";
+  else if(doc_type == "8")
+    return "aa 9999999";
+  else if(doc_type == "11")
+    return "aa-aa 999-999";
+  else if(doc_type == null)
+    return null
+  else
+    return 0
+}
+
+function getInvalid(doc_type, doc_number){
+  const regexpPassport = /^[0-9]{4} [0-9]{6}$/
+  const regexpZagranPassportRF = /^\d{9}$/
+  const regexpBirthCertificate = /^[IVXLCDM]{1,3}[А-Я^]{2}[0-9]{6}$/g
+  const regexpMilitaryID = /[А-Я^]{2}[0-9]{7}$/g
+  if(clickBtn.value){
+    let get_invalid = true
+    if(doc_type == "0")
+      get_invalid = !regexpPassport.test(doc_number);
+    else if(doc_type == "2")
+      get_invalid = !regexpZagranPassportRF.test(doc_number);
+    else if(doc_type == "4")
+      get_invalid = !regexpBirthCertificate.test(doc_number);
+    else if(doc_type == "8")
+      get_invalid = !regexpMilitaryID.test(doc_number);
+    if(get_invalid)
+      clickBtn.value = false
+
+    return get_invalid
+  }
 }
 
 onMounted(async () => {
@@ -40,7 +77,6 @@ onMounted(async () => {
     .catch((error) => {
       console.log(error);
     });
-    
 });
 
 </script>
@@ -52,7 +88,7 @@ onMounted(async () => {
       <template #content>
         <div class="flex flex-row overflow-y-auto">
           <div v-for="(passenger, index) in passengers_list" :key="index" class="">
-            <Card class="mx-2 w-23rem" :class="getClass(index)">
+            <Card class="mx-2 w-23rem" :class="passenger.child == 0 ? '': 'bg-blue-500'">
               <template #title
                 >Пассажир №{{ index + 1 }}
                 <span v-if="passenger.child">Детский</span></template
@@ -93,21 +129,31 @@ onMounted(async () => {
                     :options="docTypes"
                     optionLabel="name"
                     optionValue="id"
-                    v-model="passenger.doc"
+                    v-model="passenger.doc_type"
                   />
-                  <!-- <InputMask
-                    placeholder="Серия/Номер паспорта"
-                    mask="9999/999-999"
-                    v-if="passenger.doc == 'Паспорт'"
-                    v-model="passenger.passport"
-                  /> -->
+                  <InputMask
+                    placeholder="Серия/Номер"
+                    v-if="getMask(passenger.doc_type) != null && getMask(passenger.doc_type) != 0"
+                    :mask="getMask(passenger.doc_type)"
+                    v-model="passenger.doc_number"
+                    :invalid="getInvalid(passenger.doc_type, passenger.doc_number)"
+                  />
+                  <InputText 
+                    placeholder="i t"
+                    v-if="getMask(passenger.doc_type) == 0" 
+                    v-model="passenger.doc_number" 
+                  />
                 </div>
               </template>
             </Card>
           </div>
         </div>
         <div class="w-full my-2 flex justify-content-end">
-          <Button label="Купить" :disabled="disabled_btn()" />
+          <Button 
+            label="Купить" 
+            :disabled="disabled_btn()" 
+            @click="clickBtn = true"
+          />
         </div>
       </template>
     </Card>

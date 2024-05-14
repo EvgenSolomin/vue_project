@@ -30,8 +30,8 @@ const passengers_list = ref([{
     bd: null,
     sex:null,
     nationality: null,
-    doc: null,
-    // passport: null,
+    doc_type: null,
+    doc_number: null,
     child:0,
 }])
 
@@ -40,7 +40,3 @@ provide('DATA_TO_FL', show_form)
 provide('DATA_FROM_PASSENGERS', {adult, child})
 provide('DATA_TO_p-list', passengers_list)
 </script>
-
-<style scoped>
-
-</style>

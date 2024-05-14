@@ -23,8 +23,8 @@ const data_passenger = {
     bd: null,
     sex:null,
     nationality: null,
-    doc: null,
-    //passport: null,
+    doc_type: null,
+    doc_number: null,
     child:0
 }
 
