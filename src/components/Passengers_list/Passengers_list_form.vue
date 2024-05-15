@@ -41,8 +41,8 @@ function getInvalid(doc_type, doc_number){
   const regexpZagranPassportRF = /^\d{9}$/
   const regexpBirthCertificate = /^[IVXLCDM]{1,3}[А-Я^]{2}[0-9]{6}$/g
   const regexpMilitaryID = /[А-Я^]{2}[0-9]{7}$/g
-  if(clickBtn.value){
-    let get_invalid = true
+  let get_invalid = null
+  if(clickBtn){
     if(doc_type == "0")
       get_invalid = !regexpPassport.test(doc_number);
     else if(doc_type == "2")
@@ -53,7 +53,6 @@ function getInvalid(doc_type, doc_number){
       get_invalid = !regexpMilitaryID.test(doc_number);
     if(get_invalid)
       clickBtn.value = false
-
     return get_invalid
   }
 }
